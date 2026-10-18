@@ -131,6 +131,41 @@ details p{margin-top:10px;color:var(--muted);font-size:16px;max-width:62ch}
 footer{border-top:1px solid var(--line);padding-block:32px;font-size:13px;color:var(--muted)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px}
 footer p{max-width:60ch}
+/* status + rating */
+.toprow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.status.open i{background:#1f9d55;box-shadow:0 0 0 4px color-mix(in srgb,#1f9d55 20%,transparent)}
+.rating{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);text-decoration:none}
+.rating b{color:var(--ink);font-weight:600}
+.rating .st{color:#f5a623;letter-spacing:1px}
+.rating:hover{color:var(--ink)}
+/* quick access */
+.quick{margin-top:44px;display:grid;gap:12px}
+.quick .opts{display:flex;flex-wrap:wrap;gap:8px}
+.quick a{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 16px;font-size:15px;font-weight:500;text-decoration:none;transition:border-color .15s ease,color .15s ease}
+.quick a:hover{border-color:var(--accent);color:var(--accent)}
+/* why */
+.why{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.why div{border:1px solid var(--line);background:var(--surface);border-radius:18px;padding:28px;display:grid;gap:8px;align-content:start;min-width:0}
+.why h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
+.why p{color:var(--muted);font-size:16px}
+@media (max-width:760px){.why{grid-template-columns:1fr}}
+/* docs */
+.docgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.docgrid div{min-width:0}
+.docgrid h3{font-size:17px;font-weight:600;margin-bottom:10px}
+.docgrid ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px;color:var(--muted)}
+.docgrid li{display:grid;grid-template-columns:18px 1fr;gap:8px}
+.docgrid li::before{content:"✓";color:var(--accent);font-weight:600}
+@media (max-width:760px){.docgrid{grid-template-columns:1fr}}
+/* mobile sticky bar */
+.mbar{display:none}
+@media (max-width:680px){
+  .mbar{display:flex;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+  .mbar .btn{flex:1;justify-content:center;height:48px;padding:0 12px}
+  body{padding-bottom:76px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -139,7 +174,7 @@ footer p{max-width:60ch}
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="TraspAuto, inicio"><img src="data:image/png;base64,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" alt="">Trasp<b>Auto</b></a>
+    <a class="logo" href="#top" aria-label="TraspAuto, inicio"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAABmCAYAAAAH1klpAAAMi0lEQVR42u2de3BcdRXHP9ncZNOkaR5t0tLSl0qBahGBgohCpYWiQFtBxReOrxFBFBkccNQRx/E1jozKoAMjyujU8Q9BqwOWFqlgqRYsj9rigwLl0VbpI2nSJE02L/8459Ll5t7du/eV3bu/78ydJHs3d/ee8/39zuP3O+fWdNywkUnC8cApwFygEQOAcT26geeAJ4GBJD7YmoSbPRG4CvgI0GF074lR4Fng+8AvgVycH5ZJ+OaWAXcC1xsSFEWtDprbgF8ALWkhwnnAt4G3Gx2XhCxwGbA2TjIkRYQ3AZ8HzjZ6DYR6YDlwi/5ekUSYAbwHWGX0GQpTgDXA5ZXqLC4FPlngs0aAQT3GqljRNarsxgIDtA34OvAwsK+SiDAfWK0/nRgDjgL/BjYBfwd6q3zEvwO4CHi9+gZuM/gc4MvAtZVChHrgVOC9HuePAOuB72m8bADrNEq4DVjh4Q80Ae8GFgAvVIKPMBO4EJjucm4A+BPwTUOCCdgNXAlsLmAqO4GbKsVZfANwsYdPsAP4KfC00bsruoBPKSm8zMj56oiXNRHaNVSc63LuEHAfsMHouyBeAL6Ke0YxozPtFeVOhNlqFpzXHwa2A/cYPfvCBmCrx7kWJE1ftkTIIqnRpR5T3l+Afxod+0I3cLMOIDdHvxNYVK5EsM2Cc0VxFNgF3J+AALMpIsMOPbxk/eFyJcJxwDtdXu8DngIej1FoTcBbNPQ6N0pnahJxBPihx7mpeq9ll0doAE4A3uhy7n/AIzEKrBl4K5LAWqgCvKsEp7QVqEtIuePAQZ/vzSGZxB4mLjpZSLaxE9hfTkRoAc5wmZpHkI0Wj8RMgjWaaLFHy3Q1UcU2d5yiR3OCRNgFPOjz/b3An/X+nGgDLgB+VU5E6ESWm91uZCewNyYSnK0zwYK81w/oLDTgg7yr1bmtTXDKHwS26UgvhsPAzzyI0Ios6oUiQpQ+QhbJkbuZhVcKhEFxkGA/8ADwDx/XaFTfIkkS2PJqK+H9T3vkFOrVFJaNszgNONMlWhgBXgIe86mUNp9e/7QiJNjo0w73IBm8Xo1sxhI4RoHnNZz2iwFk65qbDqcgi1FlYRo6PMxCH/AvH2Zhgdr5acAejTD2+XAMnSTYiKxjHCxBwBtVKa0J+gg7KG21dQC4F1js4SesBH4+2USoB14HvNnl3CG1hYUwBTgN+IB67l0ahq53IYNtDlYVIMGBEr//brzz+uUURt4P3OjhJ1wchghRmYZmjRaaXJJIe32YBUvJUJeXKFkGvAtJV7v5BAsjIkEl4SWVqdtAnFsOPsJ0VZybZ/ychkrF2P4M8J+819o1MXUhsqRdyDGsBhLY8tzjocdGx6CZFCLMRzJ6TnQBT/i8xk7gdw4ytCkZLlMCeJHggSogge1v3edxzs4nTJqP0KYx+DTH62Max//N53WO5vkSa4CT9PcZyA7eMYfp2Y9kDUtxDL0wEzhd76UmIWdxm4P0ftAD/AG4xkMPFyM1EJNChFZkk4QTOWRNvZSVRi8yTHG8L0h04IUGHUkrE44aTgS+S+klbS/qoMi45CXmTaZpWKCjyc3u71TlEoAM65CNrW7JqQ1qDg5G8P1bkLqLdpVHEketmtIgi2IDOtO66bIpaD7BKhISzlFFz9D3DugI35UnxNM9RtJ+YEtA5eTPDKuBk2OYCfJnrpyO0hqSwyjQH9BPWI+UCDjRrpHWnXm5HduJH1Gf7QUdTIPFiHASsgXqOLWdtsdeq0R4GLghzywsd7nGMPAy4Tam2mQYAs7Rqe9JZBn7YIQK6Qb+qPa3k2SKfob03g6FcBi9iLBSidCBFBtfkeezHVESHEQym/cjO8YmEOEC4Drgbap8y8UBbFHBPYiUtrvtROpHsoldIQV2FMkw7tHvciCAqfGDrUrc5oSIMELwreg5DckLzeJonuXTLvkFO83drXpeC/zGcuQCvoIUWWQK+BSzgY8hKVLb03YLGx+NcOrel4By9lI5OKJmstPDTzgL+KhHksn2Uzp09sgBWzIOIpztY0Q06FT9PjULGRfb91/iWW00OGYeNhUIha9R/RRDVn3AkzKOrJWfaTej/sNnca9uHkSyhC8afcU6I9zrca4duAT//SeGgO58IhwqkLVymxUW4V7F1I3UMRrEh0H1wdxQp2TwA9upfybjcPB+VEK2q9bFLIyp7XrE6Cp29OigC4PtwO1Av1ORTyE1dUGXZHP6v7uMnhLxE7aE+P+dwHfQJQDLRZEbke4mX/MIDYvNEkuAO4yeYkc9sjUwSOj6BMf6LOS8EkpHkfTtfuDjemRLIMJCzS8YxIsaSt9n2Q38Hvixhv9D9gmrgCf5mMbvf9Vw5EwfoaUdo9YZPZUVcmr2b9VZYMKehmKrj3uAu5EdtDcAHzIyrSiMaCh/B7I+s9srReBnGTqLLAmvMHKtOAzrIL5Lcw8Fp/JC6EA6f15LOuoIqw12Zfppxd5YiAjtGl58EFlPyBi5VhwySoTrmLi5xxcRGoEvKAlMw+zKnxXO1XCxZCJcpCwyJEgH2tTRv7EUIswFvsXEzagGlW0iZusMv9wPERqAq4moHYtB2ZHB7ondVIwI85BdLcYxTCcsZNPK9YWIUI/sg5tu5JVqzFTnsc2LCG1E1JjJoOyxRGd+VyIsJ2SNvUHFYBay3XACERqQ9isG1WUiznISoQ33amaD9GIR8H4nEZZg1hKqDa1Ic5PXEOEcI5eqRCNaG5HRsPEsI5OqRCfycBUy6iguNjKpSsxBa1My6ht0GplUJaahz9uykLRyNqU3Oop0Le0l+BPkLGSDTgPpS71nlQyvEiGt2IO0knmIYL0I0BnzE0jB6NQUyqjGJkKat54/hJR9hy246VI/6uQUysgCmq2U+wezkYeM9SM7eoOgDmkkOjWlMmoAWi2CJ5KGkfqHEWWVxbF6yNoyucllGh4/RV4xR4loBi4lRA/DiJHfz3mUY4/5yapSS0U90GQ/+KFU9CGFL8+qgLMqsCb9OVWdEPu1rI4smyhJOV11SH/o8ypohI4h/ZxGdZANIbUIfer09urvfTrT9ak8ZyH9qecHcBibLUrfkjaCNNS6GunD48R0NTcLkSYMs/S1qUgmq1mPFv3saUoWi+rDmCq6RxXco4et5H79+xV1fJ9Dqs+6cDTDQlLGVyEt+0rBFKDdChA6juiXet7j/CE9vOr3O5QcC/WYq3Z8iUYw1UKIPqS90LMqS1vRe1XRpfZfPKzOcZBZsykIEWrVr2imSPWMBw7oscPh1F2KPMdwaYrzGjb2IqWEP0FK0qLKCQTZT1IL1GcCMmge0o09KuxDyrK+gdTrj6aYBIeBHyB1I89EeN0O/PVNckVQp60duDxiAeWQh4Pejnf7uDT4BGuBW2K49vHIMywSJUITsnR9QsQ3M6TRyAMETwmXM3qQMsKo0Yr0yGxMmgi1ao8uieGmXkYeytWbQiI8SrRdY20ch6TBCUOEoBm3FqQt/LyYyPBSComwDvcntYVBM9Idf0FYIgTNuNUjmxo+g/+efn5RQ7INspNCHE/ePR/peRkUo8CwpfFsULQhPZbqkE6gWwnf8u1EpAh3fgqJcCWS7t4S8jr1SO7lUjXPYRbDRoABK0DiwjmjzEIaaSzTGzyMpEgLYdxjFqhVB3QZ6SzCXYqUp+eHyOMucvCTM1ikDmJYOeWAfovg6/TOKeoMn7mFsRic10pBBmlBtKKILJKUw7BNhCOTIAyD8pFFDhjI4O8h1QbpxSgwmInAuTOofCIMGyIYDANHrYiI0A9sRh46FXTBqA7p7roKl44eKcMmpBVuUFnVIom86yLITbzqLB6K4Mb2IgspmwmeoGpAUsuzkKe/phVDSMPzbYRL5i1EdiSFLVccs32ErghubhzZTjUU4hqDmtMYS/lsUIOsN4SRVU5lVR/Vl7KQxZ1cyIvOAW5G2r8PBrxGFtkyfmrKiWAhD0h5MgQZ7C74i6P8UoN6hCHCVGSD6Bkh7d4Ugu3ErbTcwQokyzgWYlZppEg31RJmcywk1xzFdFwf5VSVctTi/7lLcYeOIzY7TaavunMIgxgSGCLYfoohQnVj3HYLDBEMMEQweE34GDeOAo8DG4y4A4XlN6WFCINKhFuNXkvOFcxKExHG1TPtNbotGYktvhkfwcAQweC1RBil+K7jsKZh1Ig6sOzihN2Ig4za7t0xftiRmK+fZgwhVV9xYT+yCkpGvfpbONaLJ+ob2Y7sxjEoHV1I+Xxcs8EO4Lf5PsLdSJHKvgg/qAe4B/iSMs8gGNYDnyPa4tle4NfAF3XG5v9CccOXSBgZnQAAAABJRU5ErkJggg==" alt=""><span>Trasp<b>Auto</b></span></a>
     <div class="links">
       <a class="link" href="#como">Cómo funciona</a>
       <a class="link" href="#precio">Precio</a>
@@ -152,7 +187,11 @@ footer p{max-width:60ch}
 
 <main id="top">
   <div class="wrap hero">
-    <p class="label">Transferencia de vehículos · Online y presencial</p>
+    <div class="toprow">
+      <span class="status" id="status"><i></i><span id="status-t">Atención de lunes a viernes, 9:00–18:00</span></span>
+      <a class="rating" href="https://www.google.com/maps/place/?q=place_id:ChIJu2kNOHL9cQ0Rg_dma_Hpzao" target="_blank" rel="noopener"><span class="st" aria-hidden="true">★★★★★</span><b>5,0</b> en Google</a>
+    </div>
+    <p class="label" style="margin-top:28px">Transferencia de vehículos · Online y presencial</p>
     <h1 style="margin-top:20px">Tu coche, a tu nombre. <em>Sin colas.</em></h1>
     <p class="sub">Te ponemos en contacto con un gestor administrativo colegiado que hace la transferencia por ti. Online, sin moverte de casa, o en persona en una gestoría de nuestra red.</p>
     <div class="actions">
@@ -164,6 +203,16 @@ footer p{max-width:60ch}
       <span>Solicitud gratis en 2 minutos</span>
       <span>Precio cerrado antes de empezar</span>
       <span>Gestores colegiados</span>
+    </div>
+    <div class="quick">
+      <p class="label">¿Qué necesitas?</p>
+      <div class="opts">
+        <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=A6GoKygnE0ijOOaFwQVY5yUrCMJbdORIhI09u-sK2wtUOEZGSDRaTEE3MDVBU1dRMEZIRzFHWVBVRi4u" target="_blank" rel="noopener">Transferencia</a>
+        <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=A6GoKygnE0ijOOaFwQVY5yUrCMJbdORIhI09u-sK2wtUOEZGSDRaTEE3MDVBU1dRMEZIRzFHWVBVRi4u" target="_blank" rel="noopener">Notificación de venta</a>
+        <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=A6GoKygnE0ijOOaFwQVY5yUrCMJbdORIhI09u-sK2wtUOEZGSDRaTEE3MDVBU1dRMEZIRzFHWVBVRi4u" target="_blank" rel="noopener">Baja de vehículo</a>
+        <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=A6GoKygnE0ijOOaFwQVY5yUrCMJbdORIhI09u-sK2wtUOEZGSDRaTEE3MDVBU1dRMEZIRzFHWVBVRi4u" target="_blank" rel="noopener">Duplicado de permiso</a>
+        <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=A6GoKygnE0ijOOaFwQVY5yUrCMJbdORIhI09u-sK2wtUOEZGSDRaTEE3MDVBU1dRMEZIRzFHWVBVRi4u" target="_blank" rel="noopener">Informe DGT</a>
+      </div>
     </div>
     <div class="plate-row" aria-label="Ejemplo de cambio de titular">
       <div class="plate" aria-hidden="true"><div class="eu"><b>★★★</b>E</div><div class="n">1234 ABC</div></div>
@@ -182,6 +231,21 @@ footer p{max-width:60ch}
         <div class="step"><span class="k">Paso 1</span><h3>Cuéntanos tu caso</h3><p>Un formulario corto: tus datos, el trámite y si lo prefieres online o en persona.</p></div>
         <div class="step"><span class="k">Paso 2</span><h3>Te llama tu gestor</h3><p>Un gestor colegiado revisa la documentación y te da el precio total cerrado.</p></div>
         <div class="step"><span class="k">Paso 3</span><h3>Recibes el permiso</h3><p>El gestor lo presenta en Tráfico y el vehículo queda a tu nombre.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="por-que">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Por qué TraspAuto</p>
+        <h2>Una persona de verdad, de principio a fin.</h2>
+      </div>
+      <div class="why">
+        <div><h3>Precio cerrado, sin sorpresas</h3><p>Tu gestor te dice el total (tasa, impuesto y honorarios) antes de empezar. Lo que te dice es lo que pagas.</p></div>
+        <div><h3>Tu gestor te llama</h3><p>Hablas con un gestor administrativo colegiado que revisa tu caso, no con un formulario sin respuesta.</p></div>
+        <div><h3>Online o en persona</h3><p>Hazlo todo desde el móvil o, si lo prefieres, entrega los papeles en una gestoría de nuestra red.</p></div>
+        <div><h3>Seguimiento por WhatsApp</h3><p>Pregunta cómo va tu trámite cuando quieras, en el mismo chat, sin esperas al teléfono.</p></div>
       </div>
     </div>
   </section>
@@ -223,7 +287,11 @@ footer p{max-width:60ch}
         <div><span class="label">Impuesto (ITP)</span><span class="v">Según CC. AA.</span><p>Se calcula sobre el valor fiscal del vehículo.</p></div>
         <div><span class="label">Honorarios</span><span class="v">Cerrados</span><p>Tu gestor te los confirma antes de empezar.</p></div>
       </div>
-      <p class="docs"><strong>Documentación habitual:</strong> DNI o NIE de comprador y vendedor, permiso de circulación, ficha técnica con ITV en vigor, contrato de compraventa y último recibo del impuesto de circulación.</p>
+      <div class="docgrid">
+        <div><h3>Si compras</h3><ul><li>DNI o NIE en vigor</li><li>Contrato de compraventa firmado</li><li>Datos de tu domicilio para el nuevo permiso</li></ul></div>
+        <div><h3>Si vendes</h3><ul><li>DNI o NIE en vigor</li><li>Permiso de circulación y ficha técnica con ITV en vigor</li><li>Último recibo del impuesto de circulación pagado</li></ul></div>
+      </div>
+      <p class="docs">Tu gestor te confirma la lista exacta según tu caso.</p>
     </div>
   </section>
 
@@ -234,9 +302,12 @@ footer p{max-width:60ch}
         <h2>Lo que suelen preguntarnos.</h2>
       </div>
       <div class="faq">
-        <details><summary>¿Traspauto es una gestoría?</summary><p>No. Te ponemos en contacto con gestores administrativos colegiados. El trámite lo realiza y lo firma siempre el gestor, que es quien te factura sus honorarios.</p></details>
+        <details><summary>¿TraspAuto es una gestoría?</summary><p>No. Te ponemos en contacto con gestores administrativos colegiados. El trámite lo realiza y lo firma siempre el gestor, que es quien te factura sus honorarios.</p></details>
         <details><summary>¿Dónde ofrecéis el servicio?</summary><p>La modalidad online funciona desde cualquier lugar de España. Para la presencial te asignamos una gestoría de nuestra red en tu zona; si aún no tenemos una cerca, te lo decimos y te ofrecemos la opción online.</p></details>
         <details><summary>¿Cuánto tarda?</summary><p>Depende de la documentación y de Tráfico. Tu gestor te indica el plazo previsto cuando revisa tu caso.</p></details>
+        <details><summary>¿Puedo circular mientras llega el nuevo permiso?</summary><p>Sí. Cuando el gestor presenta la transferencia, te entrega un justificante que te permite circular hasta que recibas el permiso de circulación a tu nombre.</p></details>
+        <details><summary>¿Quién paga la transferencia?</summary><p>Lo habitual es que la pague el comprador, aunque se puede pactar otra cosa en el contrato. Al vendedor le interesa que se haga cuanto antes para dejar de figurar como titular.</p></details>
+        <details><summary>¿Y si el vehículo tiene cargas o embargos?</summary><p>Tu gestor revisa el informe de la DGT antes de empezar y te avisa si hay algo que impida la transferencia o que haya que resolver primero.</p></details>
         <details><summary>¿Puedo pedir otro gestor?</summary><p>Sí. Indícalo en la solicitud o cuando te llamen y te asignamos otra gestoría de nuestra red.</p></details>
         <details><summary>¿Qué hacéis con mis datos?</summary><p>Solo los usamos para tu solicitud y los cedemos únicamente al gestor colegiado que te atiende, con tu consentimiento expreso.</p></details>
       </div>
@@ -255,9 +326,29 @@ footer p{max-width:60ch}
 <footer>
   <div class="wrap">
     <span>© 2026 TraspAuto · Teléfono y WhatsApp: 622 78 04 78</span>
-    <p>Traspauto no es una gestoría administrativa. Los trámites ante la DGT los realizan gestores administrativos colegiados independientes, responsables de su servicio y sus honorarios.</p>
+    <p>TraspAuto no es una gestoría administrativa ni forma parte de la DGT. Los trámites ante la DGT los realizan gestores administrativos colegiados independientes, responsables de su servicio y sus honorarios.</p>
   </div>
 </footer>
+
+<div class="mbar">
+  <a class="btn" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=A6GoKygnE0ijOOaFwQVY5yUrCMJbdORIhI09u-sK2wtUOEZGSDRaTEE3MDVBU1dRMEZIRzFHWVBVRi4u" target="_blank" rel="noopener">Pedir transferencia</a>
+  <a class="btn wa" href="https://wa.me/34622780478" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .3-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"/></svg>WhatsApp</a>
+</div>
+
+<script>
+(function(){
+  try{
+    var f=new Intl.DateTimeFormat('es-ES',{timeZone:'Europe/Madrid',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false});
+    var parts={};f.formatToParts(new Date()).forEach(function(p){parts[p.type]=p.value});
+    var d=parts.weekday.toLowerCase(), h=parseInt(parts.hour,10)%24, m=parseInt(parts.minute,10);
+    var weekday=['lun','mar','mié','jue','vie'].some(function(x){return d.indexOf(x)===0});
+    var mins=h*60+m, open=weekday && mins>=540 && mins<1080;
+    var el=document.getElementById('status'), t=document.getElementById('status-t');
+    if(open){el.classList.add('open');t.textContent='Atención abierta ahora · L–V 9:00–18:00';}
+    else{t.textContent='Ahora cerrado · deja tu solicitud y te llamamos en horario laboral';}
+  }catch(e){}
+})();
+</script>
 
 </body>
 </html>
