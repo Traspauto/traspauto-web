@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://traspauto.com/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://traspauto.com/</loc><lastmod>2026-10-19</lastmod><priority>1.0</priority></url>
+  <url><loc>https://traspauto.com/transferencia-vehiculos-granada</loc><lastmod>2026-10-19</lastmod><priority>0.9</priority></url>
+  <url><loc>https://traspauto.com/cambio-de-titularidad-coche</loc><lastmod>2026-10-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://traspauto.com/transferencia-vehiculo-online</loc><lastmod>2026-10-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://traspauto.com/transferencia-moto</loc><lastmod>2026-10-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://traspauto.com/precio-transferencia-vehiculo</loc><lastmod>2026-10-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://traspauto.com/itp-coche-andalucia</loc><lastmod>2026-10-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://traspauto.com/documentacion-transferencia-vehiculo</loc><lastmod>2026-10-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://traspauto.com/contrato-compraventa-vehiculo</loc><lastmod>2026-10-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://traspauto.com/notificacion-de-venta-dgt</loc><lastmod>2026-10-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://traspauto.com/transferencia-vehiculo-herencia</loc><lastmod>2026-10-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://traspauto.com/baja-vehiculo-dgt</loc><lastmod>2026-10-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://traspauto.com/duplicado-permiso-circulacion</loc><lastmod>2026-10-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://traspauto.com/informe-dgt</loc><lastmod>2026-10-19</lastmod><priority>0.8</priority></url>
 </urlset>
