@@ -222,6 +222,14 @@ footer p{max-width:60ch}
 .flinks a{text-decoration:none;color:var(--muted)}.flinks a:hover{color:var(--ink)}
 .prose a.btn{color:var(--cta-ink);text-decoration:none}.prose a.btn.wa{color:var(--ink)}
 .cta-inline{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 8px}
+
+.ck{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:560px;margin:0 auto;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:0 10px 30px rgba(0,0,0,.12);font-size:14px;display:none}
+.ck p{margin:0 0 12px;color:var(--muted)}
+.ck .ckb{display:flex;gap:8px;flex-wrap:wrap}
+.ck button{font:inherit;font-weight:600;border-radius:999px;padding:9px 18px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--ink)}
+.ck button.ok{background:var(--cta);color:var(--cta-ink);border-color:var(--cta)}
+@media (max-width:680px){.ck{bottom:84px}}
+.ckl{background:none;border:0;padding:0;color:var(--muted);font:inherit;cursor:pointer;text-decoration:underline}
 </style>
 </head>
 <body>
@@ -288,6 +296,7 @@ footer p{max-width:60ch}
   <div class="wrap">
     <nav class="flinks" aria-label="Trámites y guías"><a href="/">Inicio</a><a href="/transferencia-vehiculos-granada">Transferencia en Granada</a><a href="/cambio-de-titularidad-coche">Cambio de titularidad</a><a href="/transferencia-vehiculo-online">Transferencia online</a><a href="/transferencia-moto">Transferencia de moto</a><a href="/precio-transferencia-vehiculo">Precio de la transferencia</a><a href="/itp-coche-andalucia">ITP en Andalucía</a><a href="/documentacion-transferencia-vehiculo">Documentación</a><a href="/contrato-compraventa-vehiculo">Contrato de compraventa</a><a href="/notificacion-de-venta-dgt">Notificación de venta</a><a href="/transferencia-vehiculo-herencia">Transferencia por herencia</a><a href="/baja-vehiculo-dgt">Baja de vehículo</a><a href="/duplicado-permiso-circulacion">Duplicado de permiso</a><a href="/informe-dgt">Informe DGT</a><a href="/transferencia-coche-familiar">Coche entre familiares</a><a href="/transferencia-vehiculo-empresa">Vehículos de empresa</a></nav>
     <span>© 2026 TraspAuto · Teléfono y WhatsApp: 622 78 04 78</span>
+    <span><a href="https://g.page/r/CYP3Zmvx6c2qEBM/review" target="_blank" rel="noopener" style="color:inherit">Valóranos en Google ★</a> · <button class="ckl" id="ck-reopen" type="button">Configurar cookies</button></span>
     <p>TraspAuto no es una gestoría administrativa ni forma parte de la DGT. Los trámites ante la DGT los realizan gestores administrativos colegiados independientes, responsables de su servicio y sus honorarios.</p>
   </div>
 </footer>
@@ -295,5 +304,42 @@ footer p{max-width:60ch}
   <a class="btn" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=A6GoKygnE0ijOOaFwQVY5yUrCMJbdORIhI09u-sK2wtUOEZGSDRaTEE3MDVBU1dRMEZIRzFHWVBVRi4u" target="_blank" rel="noopener">Solicitar</a>
   <a class="btn wa" href="https://wa.me/34622780478" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .3-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"/></svg>WhatsApp</a>
 </div>
+<div class="ck" id="ck" role="dialog" aria-label="Aviso de cookies">
+  <p>Usamos cookies de analítica (Google Analytics) para saber cuántas personas visitan la web y qué páginas les resultan útiles. Solo se activan si las aceptas.</p>
+  <div class="ckb"><button class="ok" id="ck-ok" type="button">Aceptar</button><button id="ck-no" type="button">Rechazar</button></div>
+</div>
+<script>
+(function(){
+  var GA='G-F8Z2P7V221', KEY='ta_consent';
+  function get(){try{return localStorage.getItem(KEY)}catch(e){return null}}
+  function set(v){try{localStorage.setItem(KEY,v)}catch(e){}}
+  window.dataLayer=window.dataLayer||[];
+  window.gtag=function(){dataLayer.push(arguments)};
+  var loaded=false;
+  function load(){
+    if(loaded)return; loaded=true;
+    var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+GA; document.head.appendChild(s);
+    gtag('js',new Date()); gtag('config',GA,{anonymize_ip:true});
+  }
+  var ck=document.getElementById('ck');
+  var c=get();
+  if(c==='yes'){load()} else if(c!=='no' && ck){ck.style.display='block'}
+  if(ck){
+    document.getElementById('ck-ok').onclick=function(){set('yes');ck.style.display='none';load()};
+    document.getElementById('ck-no').onclick=function(){set('no');ck.style.display='none'};
+  }
+  var re=document.getElementById('ck-reopen'); if(re&&ck){re.onclick=function(){ck.style.display='block'}}
+  // Eventos de contacto
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a'); if(!a||!loaded)return;
+    var h=a.getAttribute('href')||'', ev=null, p={page_path:location.pathname};
+    if(h.indexOf('forms.cloud.microsoft')>-1){ev='generate_lead'; p.method='formulario';}
+    else if(h.indexOf('wa.me/')>-1){ev='whatsapp_click'; p.method='whatsapp';}
+    else if(h.indexOf('tel:')===0){ev='phone_click'; p.method='telefono';}
+    else if(h.indexOf('g.page/r/')>-1){ev='review_click';}
+    if(ev){gtag('event',ev,p)}
+  },true);
+})();
+</script>
 </body>
 </html>
