@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="/favicon.png">
+<title>Pide tu trámite · TraspAuto</title>
+<meta name="description" content="Transferencia de vehículos y cambio de titularidad DGT, online o presencial, con gestores administrativos colegiados. Pide presupuesto gratis por formulario, teléfono o WhatsApp.">
+<link rel="canonical" href="https://traspauto.com/solicitud">
+<meta name="robots" content="noindex,follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://traspauto.com/">
+<meta property="og:title" content="TraspAuto · Transferencia de vehículos online y presencial">
+<meta property="og:description" content="Cambio de titularidad DGT online o presencial con gestores administrativos colegiados.">
+<meta property="og:locale" content="es_ES">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"TraspAuto","url":"https://traspauto.com/","telephone":"+34622780478","image":"https://traspauto.com/favicon.png","areaServed":["Provincia de Granada","España"],"address":{"@type":"PostalAddress","streetAddress":"Paseo Colón 10, 2G","addressLocality":"Albolote","addressRegion":"Granada","postalCode":"18220","addressCountry":"ES"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"}],"sameAs":["https://www.google.com/maps/place/?q=place_id:ChIJu2kNOHL9cQ0Rg_dma_Hpzao"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500;600&display=swap">
+<style>
+html{scroll-behavior:smooth}body{margin:0}img{max-width:100%}
+/* Layout: single-column landing, generous whitespace; one accent (registration blue) used only for the plate band, links and focus; black pill CTA */
+:root{
+  --bg:#fbfbfc; --surface:#ffffff; --ink:#0d0f14; --muted:#636a78; --line:#e7e9ee;
+  --accent:#1573ba; --navy:#3e5db2; --cta:#1573ba; --cta-ink:#ffffff; --brand-grey:#616162; --plate:#ffffff; --plate-ink:#0d0f14;
+  --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b0c10; --surface:#121419; --ink:#f2f3f6; --muted:#9aa1ae; --line:#23262e;
+  --accent:#5aa8e8; --navy:#7f97e0; --cta:#2a86d1; --cta-ink:#ffffff; --brand-grey:#c9ccd3; --plate:#f2f3f6; --plate-ink:#0d0f14; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b0c10; --surface:#121419; --ink:#f2f3f6; --muted:#9aa1ae; --line:#23262e;
+  --accent:#5aa8e8; --navy:#7f97e0; --cta:#2a86d1; --cta-ink:#ffffff; --brand-grey:#c9ccd3; --plate:#f2f3f6; --plate-ink:#0d0f14; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3,p{margin:0}
+h1,h2{text-wrap:balance;letter-spacing:-.035em;font-weight:600}
+a{color:inherit}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:6px}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;background:var(--cta);color:var(--cta-ink);font-weight:600;font-size:16px;text-decoration:none;transition:transform .15s ease,opacity .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn .arr{transition:transform .15s ease}
+.btn:hover .arr{transform:translateX(3px)}
+.link{font-weight:500;color:var(--muted);text-decoration:none}
+.btn.wa{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.wa svg{width:18px;height:18px;fill:#25d366}
+.contact{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;margin-top:22px;font-size:15px;color:var(--muted)}
+.contact a{text-decoration:none;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.nav .tel{font-weight:600;font-variant-numeric:tabular-nums;text-decoration:none}
+@media (max-width:860px){.nav .tel{display:none}}
+.link:hover{color:var(--ink)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-family:"Quicksand",var(--sans);font-weight:600;font-size:26px;letter-spacing:-.01em;text-decoration:none;display:flex;align-items:center;gap:10px;color:var(--brand-grey);line-height:1}
+.logo img{height:30px;width:auto}
+.logo b{font-weight:600;color:var(--accent)}
+.btn:not(.wa):hover{filter:brightness(1.08)}
+.nav .links{display:flex;align-items:center;gap:28px;font-size:15px}
+.nav .btn{height:40px;padding:0 18px;font-size:14px}
+@media (max-width:680px){.nav .links a.link{display:none}}
+
+/* hero */
+.hero{padding-block:88px 72px;text-align:left}
+.hero h1{font-size:clamp(42px,7.4vw,84px);line-height:1.02;max-width:12ch}
+.hero h1 em{font-style:normal;color:var(--muted)}
+.hero p.sub{margin-top:24px;font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:36em}
+.hero .actions{display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-top:36px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:40px;font-size:14px;color:var(--muted)}
+.hero .meta span{display:flex;align-items:center;gap:8px}
+.hero .meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.hero h1 em{color:var(--accent)}
+
+/* plate */
+.plate-row{display:flex;align-items:center;gap:20px;margin-top:64px;flex-wrap:wrap}
+.plate{display:inline-flex;align-items:stretch;border:2px solid var(--plate-ink);border-radius:10px;overflow:hidden;background:var(--plate);color:var(--plate-ink);max-width:100%}
+.plate .eu{width:38px;background:#3e5db2;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:7px 0;font-family:var(--mono);font-size:13px;font-weight:600}
+.plate .eu b{font-size:8px;letter-spacing:-1px;color:#ffd84a;font-weight:400}
+.plate .n{font-family:var(--mono);font-weight:600;font-size:clamp(30px,5vw,44px);letter-spacing:.08em;padding:6px 20px;white-space:nowrap}
+.plate-row .arrow{font-family:var(--mono);color:var(--muted);font-size:14px}
+.plate-row .owner{font-size:15px;color:var(--muted)}
+.plate-row .owner strong{color:var(--ink);font-weight:600;display:block}
+
+section{padding-block:80px;border-top:1px solid var(--line)}
+section h2{font-size:clamp(30px,4.2vw,46px);line-height:1.08;max-width:18ch}
+section .head{display:grid;gap:14px;margin-bottom:48px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.step{display:grid;gap:10px;align-content:start}
+.step .k{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.step h3{font-size:20px;font-weight:600;letter-spacing:-.015em}
+.step p{color:var(--muted);font-size:16px}
+@media (max-width:760px){.steps{grid-template-columns:1fr;gap:32px}}
+
+/* modes */
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mode{border:1px solid var(--line);background:var(--surface);border-radius:18px;padding:32px;display:grid;gap:12px;align-content:start;min-width:0}
+.mode h3{font-size:24px;font-weight:600;letter-spacing:-.02em}
+.mode p{color:var(--muted);font-size:16px}
+.mode ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px;font-size:15px}
+.mode li{display:grid;grid-template-columns:18px 1fr;gap:8px}
+.mode li::before{content:"✓";color:var(--accent);font-weight:600}
+@media (max-width:760px){.modes{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.chips span{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;color:var(--muted)}
+
+/* price */
+.price{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:18px;background:var(--surface);overflow:hidden}
+.price div{padding:28px;display:grid;gap:6px;align-content:start;min-width:0}
+.price div+div{border-left:1px solid var(--line)}
+.price .v{font-size:30px;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.price p{color:var(--muted);font-size:15px}
+@media (max-width:760px){.price{grid-template-columns:1fr}.price div+div{border-left:0;border-top:1px solid var(--line)}}
+.docs{margin-top:28px;color:var(--muted);font-size:15px;max-width:62ch}
+.docs strong{color:var(--ink);font-weight:600}
+
+/* faq */
+.faq{max-width:760px}
+details{border-bottom:1px solid var(--line);padding-block:20px}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;font-weight:500;font-size:18px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:10px;height:10px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg) translateY(-3px);transition:transform .2s ease}
+details[open] summary::after{transform:rotate(-135deg)}
+details p{margin-top:10px;color:var(--muted);font-size:16px;max-width:62ch}
+
+/* final */
+.final{text-align:center}
+.final h2{margin:0 auto;max-width:16ch}
+.final p{margin:16px auto 0;color:var(--muted);max-width:34em}
+.final .btn{margin-top:32px}
+
+footer{border-top:1px solid var(--line);padding-block:32px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px}
+footer p{max-width:60ch}
+/* status + rating */
+.toprow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.status.open i{background:#1f9d55;box-shadow:0 0 0 4px color-mix(in srgb,#1f9d55 20%,transparent)}
+.rating{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);text-decoration:none}
+.rating b{color:var(--ink);font-weight:600}
+.rating .st{color:#f5a623;letter-spacing:1px}
+.rating:hover{color:var(--ink)}
+/* quick access */
+.quick{margin-top:44px;display:grid;gap:12px}
+.quick .opts{display:flex;flex-wrap:wrap;gap:8px}
+.quick a{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 16px;font-size:15px;font-weight:500;text-decoration:none;transition:border-color .15s ease,color .15s ease}
+.quick a:hover{border-color:var(--accent);color:var(--accent)}
+/* why */
+.why{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.why div{border:1px solid var(--line);background:var(--surface);border-radius:18px;padding:28px;display:grid;gap:8px;align-content:start;min-width:0}
+.why h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
+.why p{color:var(--muted);font-size:16px}
+@media (max-width:760px){.why{grid-template-columns:1fr}}
+/* docs */
+.docgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.docgrid div{min-width:0}
+.docgrid h3{font-size:17px;font-weight:600;margin-bottom:10px}
+.docgrid ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px;color:var(--muted)}
+.docgrid li{display:grid;grid-template-columns:18px 1fr;gap:8px}
+.docgrid li::before{content:"✓";color:var(--accent);font-weight:600}
+@media (max-width:760px){.docgrid{grid-template-columns:1fr}}
+/* mobile sticky bar */
+.mbar{display:none}
+@media (max-width:680px){
+  .mbar{display:flex;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+  .mbar .btn{flex:1;justify-content:center;height:48px;padding:0 12px}
+  body{padding-bottom:76px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.crumbs{font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px}
+.crumbs a{text-decoration:none;color:var(--muted)}.crumbs a:hover{color:var(--ink)}
+.hero.page{padding-block:56px 48px}
+.hero.page h1{font-size:clamp(36px,5.6vw,64px);max-width:16ch}
+.prose{max-width:720px}
+.prose h2{font-size:clamp(24px,3vw,32px);line-height:1.15;margin:48px 0 14px;max-width:none}
+.prose h2:first-child{margin-top:0}
+.prose p{margin:0 0 14px;color:var(--ink)}
+.prose ul,.prose ol{margin:0 0 16px;padding-left:22px;display:grid;gap:8px}
+.prose li::marker{color:var(--accent)}
+.prose a{color:var(--accent);text-underline-offset:3px}
+.prose strong{font-weight:600}
+.chips-inline{display:flex;flex-wrap:wrap;gap:8px}
+.chips-inline span{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:14px;color:var(--muted)}
+.tpl{border:1px dashed var(--line);background:var(--surface);border-radius:14px;padding:22px 24px;margin:0 0 16px;font-size:15px}
+.tpl p{margin:0 0 10px}
+.rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.rel a{border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:16px 18px;text-decoration:none;font-weight:500;transition:border-color .15s ease,color .15s ease}
+.rel a:hover{border-color:var(--accent);color:var(--accent)}
+.flinks{display:flex;flex-wrap:wrap;gap:6px 18px;width:100%;padding-bottom:16px;margin-bottom:4px;border-bottom:1px solid var(--line)}
+.flinks a{text-decoration:none;color:var(--muted)}.flinks a:hover{color:var(--ink)}
+.cta-inline{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 8px}
+
+.ck{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:560px;margin:0 auto;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:0 10px 30px rgba(0,0,0,.12);font-size:14px;display:none}
+.ck p{margin:0 0 12px;color:var(--muted)}
+.ck .ckb{display:flex;gap:8px;flex-wrap:wrap}
+.ck button{font:inherit;font-weight:600;border-radius:999px;padding:9px 18px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--ink)}
+.ck button.ok{background:var(--cta);color:var(--cta-ink);border-color:var(--cta)}
+@media (max-width:680px){.ck{bottom:84px}}
+.ckl{background:none;border:0;padding:0;color:var(--muted);font:inherit;cursor:pointer;text-decoration:underline}
+
+
+
+/* menu servicios */
+.nav .wrap{position:relative}
+.svc{position:static}
+.svc>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:600;color:var(--ink);background:var(--surface);user-select:none}
+.svc>summary::-webkit-details-marker{display:none}
+.svc>summary::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s ease}
+.svc[open]>summary::after{transform:rotate(-135deg) translateY(-1px)}
+.svc>summary:hover{border-color:var(--accent);color:var(--accent)}
+.svc-panel{position:absolute;right:max(20px,env(safe-area-inset-right,0px));top:calc(100% + 6px);width:min(720px,calc(100% - 40px));background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 40px rgba(0,0,0,.12);padding:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px 24px;z-index:30}
+.svc-panel p{margin:0 0 8px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.svc-panel a{display:block;padding:7px 0;font-size:15px;font-weight:500;text-decoration:none;color:var(--ink);border-radius:8px}
+.svc-panel a:hover,.svc-panel a[aria-current]{color:var(--accent)}
+.svc-panel .svc-all{grid-column:1/-1;border-top:1px solid var(--line);padding-top:14px;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}
+.svc-panel .svc-all a{display:inline;padding:0;font-size:14px;font-weight:600;color:var(--accent)}
+@media (max-width:860px){.svc-panel{grid-template-columns:1fr 1fr}}
+@media (max-width:680px){
+  .svc>summary{height:38px;padding:0 12px;font-size:14px}
+  .svc-panel{position:fixed;left:12px;right:12px;width:auto;top:calc(64px + env(safe-area-inset-top,0px));max-height:calc(100vh - 160px);overflow:auto;grid-template-columns:1fr;gap:14px;padding:18px}
+  .svc-panel a{padding:9px 0;font-size:16px}
+  .nav .links{gap:10px}
+  .nav .btn{padding:0 14px}
+  .logo{font-size:21px;gap:8px}.logo img{height:24px}
+}
+@media (max-width:370px){.nav .btn{display:none}}
+</style>
+</head>
+<body data-tp-page>
+
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="TraspAuto, inicio"><img src="data:image/png;base64,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" alt=""><span>Trasp<b>Auto</b></span></a>
+    <div class="links">
+      <details class="svc"><summary aria-label="Menú de servicios">Servicios</summary><nav class="svc-panel" aria-label="Servicios"><div><p>Transferencias</p><a href="/transferencia-vehiculos-granada">Transferencia en Granada</a><a href="/transferencia-vehiculo-online">Transferencia online</a><a href="/cambio-de-titularidad-coche">Cambio de titularidad</a><a href="/transferencia-moto">Motos y ciclomotores</a><a href="/transferencia-coche-familiar">Coche entre familiares</a><a href="/transferencia-vehiculo-empresa">Vehículos de empresa</a><a href="/transferencia-vehiculo-herencia">Por herencia</a></div><div><p>Otros trámites DGT</p><a href="/notificacion-de-venta-dgt">Notificación de venta</a><a href="/baja-vehiculo-dgt">Baja de vehículo</a><a href="/duplicado-permiso-circulacion">Duplicado del permiso</a><a href="/informe-dgt">Informe DGT</a></div><div><p>Guías y precios</p><a href="/precio-transferencia-vehiculo">Precio de la transferencia</a><a href="/itp-coche-andalucia">ITP en Andalucía</a><a href="/documentacion-transferencia-vehiculo">Documentación</a><a href="/contrato-compraventa-vehiculo">Contrato de compraventa</a></div><div class="svc-all"><span>¿No sabes cuál es tu caso?</span><a href="tel:+34622780478">Llámanos: 622 78 04 78</a><a href="https://wa.me/34622780478" target="_blank" rel="noopener">Escríbenos por WhatsApp</a></div></nav></details>
+      
+      
+      <a class="link" href="#como">Cómo funciona</a>
+      <a class="link" href="#precio">Precio</a>
+      <a class="link" href="#faq">Preguntas</a>
+      <a class="tel" href="tel:+34622780478">622 78 04 78</a>
+      <a class="btn" href="/solicitud" data-pedir>Solicitar</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="toprow">
+      <span class="status" id="status"><i></i><span id="status-t">Atención de lunes a viernes, 9:00–18:00</span></span>
+      <a class="rating" href="https://www.google.com/maps/place/?q=place_id:ChIJu2kNOHL9cQ0Rg_dma_Hpzao" target="_blank" rel="noopener"><span class="st" aria-hidden="true">★★★★★</span><b>5,0</b> en Google</a>
+    </div>
+    <p class="label" style="margin-top:28px">Transferencia de vehículos · Online y presencial</p>
+    <h1 style="margin-top:20px">Tu coche, a tu nombre. <em>Sin colas.</em></h1>
+    <p class="sub">Te ponemos en contacto con un gestor administrativo colegiado que hace la transferencia por ti. Online, sin moverte de casa, o en persona en una gestoría de nuestra red.</p>
+    <div class="actions">
+      <a class="btn" href="/solicitud" data-pedir>Pedir mi transferencia <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn wa" href="https://wa.me/34622780478" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .3-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"/></svg>WhatsApp</a>
+    </div>
+    <p class="contact"><span>¿Prefieres hablar? Llama o escribe al <a href="tel:+34622780478">622 78 04 78</a></span></p>
+    <div class="meta">
+      <span>Solicitud gratis en 2 minutos</span>
+      <span>Precio cerrado antes de empezar</span>
+      <span>Gestores colegiados</span>
+    </div>
+    <div class="quick">
+      <p class="label">¿Qué necesitas?</p>
+      <div class="opts">
+        <a href="/transferencia-vehiculos-granada">Transferencia</a>
+        <a href="/notificacion-de-venta-dgt">Notificación de venta</a>
+        <a href="/baja-vehiculo-dgt">Baja de vehículo</a>
+        <a href="/duplicado-permiso-circulacion">Duplicado de permiso</a>
+        <a href="/informe-dgt">Informe DGT</a>
+      </div>
+    </div>
+    <div class="plate-row" aria-label="Ejemplo de cambio de titular">
+      <div class="plate" aria-hidden="true"><div class="eu"><b>★★★</b>E</div><div class="n">1234 ABC</div></div>
+      <span class="arrow" aria-hidden="true">— cambio de titular →</span>
+      <span class="owner">Nuevo titular<strong>Tú</strong></span>
+    </div>
+  </div>
+
+  <section id="como">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Cómo funciona</p>
+        <h2>Tres pasos. Tú solo rellenas el primero.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="k">Paso 1</span><h3>Cuéntanos tu caso</h3><p>Un formulario corto: tus datos, el trámite y si lo prefieres online o en persona.</p></div>
+        <div class="step"><span class="k">Paso 2</span><h3>Te llama tu gestor</h3><p>Un gestor colegiado revisa la documentación y te da el precio total cerrado.</p></div>
+        <div class="step"><span class="k">Paso 3</span><h3>Recibes el permiso</h3><p>El gestor lo presenta en Tráfico y el vehículo queda a tu nombre.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="por-que">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Por qué TraspAuto</p>
+        <h2>Una persona de verdad, de principio a fin.</h2>
+      </div>
+      <div class="why">
+        <div><h3>Precio cerrado, sin sorpresas</h3><p>Tu gestor te dice el total (tasa, impuesto y honorarios) antes de empezar. Lo que te dice es lo que pagas.</p></div>
+        <div><h3>Tu gestor te llama</h3><p>Hablas con un gestor administrativo colegiado que revisa tu caso, no con un formulario sin respuesta.</p></div>
+        <div><h3>Online o en persona</h3><p>Hazlo todo desde el móvil o, si lo prefieres, entrega los papeles en una gestoría de nuestra red.</p></div>
+        <div><h3>Seguimiento por WhatsApp</h3><p>Pregunta cómo va tu trámite cuando quieras, en el mismo chat, sin esperas al teléfono.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Modalidades</p>
+        <h2>Online o en persona. Tú eliges.</h2>
+      </div>
+      <div class="modes">
+        <article class="mode">
+          <p class="label">Desde cualquier lugar</p>
+          <h3>Online</h3>
+          <p>Envías los documentos desde el móvil y el gestor tramita en la sede electrónica de la DGT.</p>
+          <ul><li>Sin cita ni desplazamientos</li><li>Comprador y vendedor en ciudades distintas</li></ul>
+        </article>
+        <article class="mode">
+          <p class="label">En una gestoría de tu zona</p>
+          <h3>Presencial</h3>
+          <p>Te asignamos una gestoría de nuestra red para entregar los papeles en mano.</p>
+          <ul><li>Atención cara a cara con tu gestor</li><li>Ideal para cargas, herencias o casos especiales</li></ul>
+        </article>
+      </div>
+      <div class="chips" aria-label="Otros trámites">
+        <span>Notificación de venta</span><span>Baja de vehículo</span><span>Duplicado de permiso</span><span>Informe DGT</span><span>Coches, motos y furgonetas</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="precio">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Precio</p>
+        <h2>Sin letra pequeña.</h2>
+      </div>
+      <div class="price">
+        <div><span class="label">Tasa DGT</span><span class="v">55,70 €</span><p>Importe oficial para coches y motos.</p></div>
+        <div><span class="label">Impuesto (ITP)</span><span class="v">Según CC. AA.</span><p>Se calcula sobre el valor fiscal del vehículo.</p></div>
+        <div><span class="label">Honorarios</span><span class="v">Cerrados</span><p>Tu gestor te los confirma antes de empezar.</p></div>
+      </div>
+      <div class="docgrid">
+        <div><h3>Si compras</h3><ul><li>DNI o NIE en vigor</li><li>Contrato de compraventa firmado</li><li>Datos de tu domicilio para el nuevo permiso</li></ul></div>
+        <div><h3>Si vendes</h3><ul><li>DNI o NIE en vigor</li><li>Permiso de circulación y ficha técnica con ITV en vigor</li><li>Último recibo del impuesto de circulación pagado</li></ul></div>
+      </div>
+      <p class="docs">Tu gestor te confirma la lista exacta según tu caso.</p>
+    </div>
+  </section>
+
+  <section id="guias">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Trámites y guías</p>
+        <h2>Todo sobre la transferencia de vehículos.</h2>
+      </div>
+      <div class="rel"><a href="/transferencia-vehiculos-granada">Transferencia en Granada →</a><a href="/cambio-de-titularidad-coche">Cambio de titularidad →</a><a href="/transferencia-vehiculo-online">Transferencia online →</a><a href="/transferencia-moto">Transferencia de moto →</a><a href="/precio-transferencia-vehiculo">Precio de la transferencia →</a><a href="/itp-coche-andalucia">ITP en Andalucía →</a><a href="/documentacion-transferencia-vehiculo">Documentación →</a><a href="/contrato-compraventa-vehiculo">Contrato de compraventa →</a><a href="/notificacion-de-venta-dgt">Notificación de venta →</a><a href="/transferencia-vehiculo-herencia">Transferencia por herencia →</a><a href="/baja-vehiculo-dgt">Baja de vehículo →</a><a href="/duplicado-permiso-circulacion">Duplicado de permiso →</a><a href="/informe-dgt">Informe DGT →</a><a href="/transferencia-coche-familiar">Coche entre familiares →</a><a href="/transferencia-vehiculo-empresa">Vehículos de empresa →</a></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Preguntas frecuentes</p>
+        <h2>Lo que suelen preguntarnos.</h2>
+      </div>
+      <div class="faq">
+        <details><summary>¿TraspAuto es una gestoría?</summary><p>No. Te ponemos en contacto con gestores administrativos colegiados. El trámite lo realiza y lo firma siempre el gestor, que es quien te factura sus honorarios.</p></details>
+        <details><summary>¿Dónde ofrecéis el servicio?</summary><p>La modalidad online funciona desde cualquier lugar de España. Para la presencial te asignamos una gestoría de nuestra red en tu zona; si aún no tenemos una cerca, te lo decimos y te ofrecemos la opción online.</p></details>
+        <details><summary>¿Cuánto tarda?</summary><p>Depende de la documentación y de Tráfico. Tu gestor te indica el plazo previsto cuando revisa tu caso.</p></details>
+        <details><summary>¿Puedo circular mientras llega el nuevo permiso?</summary><p>Sí. Cuando el gestor presenta la transferencia, te entrega un justificante que te permite circular hasta que recibas el permiso de circulación a tu nombre.</p></details>
+        <details><summary>¿Quién paga la transferencia?</summary><p>Lo habitual es que la pague el comprador, aunque se puede pactar otra cosa en el contrato. Al vendedor le interesa que se haga cuanto antes para dejar de figurar como titular.</p></details>
+        <details><summary>¿Y si el vehículo tiene cargas o embargos?</summary><p>Tu gestor revisa el informe de la DGT antes de empezar y te avisa si hay algo que impida la transferencia o que haya que resolver primero.</p></details>
+        <details><summary>¿Puedo pedir otro gestor?</summary><p>Sí. Indícalo en la solicitud o cuando te llamen y te asignamos otra gestoría de nuestra red.</p></details>
+        <details><summary>¿Qué hacéis con mis datos?</summary><p>Solo los usamos para tu solicitud y los cedemos únicamente al gestor colegiado que te atiende, con tu consentimiento expreso.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>¿Has comprado o vendido un vehículo?</h2>
+      <p>Déjalo en manos de un profesional. Rellena la solicitud o llámanos al <a href="tel:+34622780478" style="font-weight:600;text-decoration:none;color:var(--ink)">622 78 04 78</a>.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px"><a class="btn" style="margin-top:0" href="/solicitud" data-pedir>Pedir mi transferencia <span class="arr" aria-hidden="true">→</span></a><a class="btn wa" style="margin-top:0" href="https://wa.me/34622780478" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .3-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"/></svg>WhatsApp</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav class="flinks" aria-label="Trámites y guías"><a href="/">Inicio</a><a href="/transferencia-vehiculos-granada">Transferencia en Granada</a><a href="/cambio-de-titularidad-coche">Cambio de titularidad</a><a href="/transferencia-vehiculo-online">Transferencia online</a><a href="/transferencia-moto">Transferencia de moto</a><a href="/precio-transferencia-vehiculo">Precio de la transferencia</a><a href="/itp-coche-andalucia">ITP en Andalucía</a><a href="/documentacion-transferencia-vehiculo">Documentación</a><a href="/contrato-compraventa-vehiculo">Contrato de compraventa</a><a href="/notificacion-de-venta-dgt">Notificación de venta</a><a href="/transferencia-vehiculo-herencia">Transferencia por herencia</a><a href="/baja-vehiculo-dgt">Baja de vehículo</a><a href="/duplicado-permiso-circulacion">Duplicado de permiso</a><a href="/informe-dgt">Informe DGT</a><a href="/transferencia-coche-familiar">Coche entre familiares</a><a href="/transferencia-vehiculo-empresa">Vehículos de empresa</a></nav>
+    <span>© 2026 TraspAuto · Teléfono y WhatsApp: 622 78 04 78</span>
+    <span><a href="https://g.page/r/CYP3Zmvx6c2qEBM/review" target="_blank" rel="noopener" style="color:inherit">Valóranos en Google ★</a> · <button class="ckl" id="ck-reopen" type="button">Configurar cookies</button></span>
+    <p>TraspAuto no es una gestoría administrativa ni forma parte de la DGT. Los trámites ante la DGT los realizan gestores administrativos colegiados independientes, responsables de su servicio y sus honorarios.</p>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="btn" href="/solicitud" data-pedir>Pedir transferencia</a>
+  <a class="btn wa" href="https://wa.me/34622780478" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .3-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"/></svg>WhatsApp</a>
+</div>
+
+<script>
+(function(){
+  try{
+    var f=new Intl.DateTimeFormat('es-ES',{timeZone:'Europe/Madrid',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false});
+    var parts={};f.formatToParts(new Date()).forEach(function(p){parts[p.type]=p.value});
+    var d=parts.weekday.toLowerCase(), h=parseInt(parts.hour,10)%24, m=parseInt(parts.minute,10);
+    var weekday=['lun','mar','mié','jue','vie'].some(function(x){return d.indexOf(x)===0});
+    var mins=h*60+m, open=weekday && mins>=540 && mins<1080;
+    var el=document.getElementById('status'), t=document.getElementById('status-t');
+    if(open){el.classList.add('open');t.textContent='Atención abierta ahora · L–V 9:00–18:00';}
+    else{t.textContent='Ahora cerrado · deja tu solicitud y te llamamos en horario laboral';}
+  }catch(e){}
+})();
+</script>
+
+<div class="ck" id="ck" role="dialog" aria-label="Aviso de cookies">
+  <p>Usamos cookies de analítica (Google Analytics) para saber cuántas personas visitan la web y qué páginas les resultan útiles. Solo se activan si las aceptas.</p>
+  <div class="ckb"><button class="ok" id="ck-ok" type="button">Aceptar</button><button id="ck-no" type="button">Rechazar</button></div>
+</div>
+<script>
+(function(){
+  var GA='G-F8Z2P7V221', KEY='ta_consent';
+  function get(){try{return localStorage.getItem(KEY)}catch(e){return null}}
+  function set(v){try{localStorage.setItem(KEY,v)}catch(e){}}
+  window.dataLayer=window.dataLayer||[];
+  window.gtag=function(){dataLayer.push(arguments)};
+  var loaded=false;
+  function load(){
+    if(loaded)return; loaded=true;
+    var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+GA; document.head.appendChild(s);
+    gtag('js',new Date()); gtag('config',GA,{anonymize_ip:true});
+  }
+  var ck=document.getElementById('ck');
+  var c=get();
+  if(c==='yes'){load()} else if(c!=='no' && ck){ck.style.display='block'}
+  if(ck){
+    document.getElementById('ck-ok').onclick=function(){set('yes');ck.style.display='none';load()};
+    document.getElementById('ck-no').onclick=function(){set('no');ck.style.display='none'};
+  }
+  var re=document.getElementById('ck-reopen'); if(re&&ck){re.onclick=function(){ck.style.display='block'}}
+  // Eventos de contacto
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a'); if(!a||!loaded)return;
+    var h=a.getAttribute('href')||'', ev=null, p={page_path:location.pathname};
+    if(a.hasAttribute('data-pedir')){ev='form_open'; p.method='formulario';}
+    else if(h.indexOf('wa.me/')>-1){ev='whatsapp_click'; p.method='whatsapp';}
+    else if(h.indexOf('tel:')===0){ev='phone_click'; p.method='telefono';}
+    else if(h.indexOf('g.page/r/')>-1){ev='review_click';}
+    if(ev){gtag('event',ev,p)}
+  },true);
+})();
+</script>
+<script>
+(function(){var d=document.querySelector('.svc');if(!d)return;
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus()}});
+d.querySelectorAll('.svc-panel a').forEach(function(a){if(a.getAttribute('href')===location.pathname.replace(/\.html$/,''))a.setAttribute('aria-current','page')});
+})();
+</script>
+
+
+
+<!-- Formulario de solicitud TraspAuto -->
+<dialog class="tp-dlg" id="pedir" aria-labelledby="tp-title">
+  <form class="tp-form" id="tpForm" novalidate>
+    <button class="tp-x" type="button" data-tp-close aria-label="Cerrar">×</button>
+    <div class="tp-head">
+      <span class="tp-plate" aria-hidden="true"><b>E</b>PIDE · GRATIS</span>
+      <h2 id="tp-title">¿Qué trámite necesitas?</h2>
+      <p class="tp-sub">Tres toques y un gestor colegiado te llama en breve.</p>
+    </div>
+    <fieldset class="tp-step"><legend class="tp-q"><span class="n">1</span>El trámite</legend>
+      <div class="tp-tiles"><label class="tp-tile"><input type="radio" name="tramite" value="Transferencia" checked><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h13l-3-3M20 15H7l3 3"/></svg>Transferencia</span></label><label class="tp-tile"><input type="radio" name="tramite" value="Notificación de venta"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20h4"/></svg>Notificación de venta</span></label><label class="tp-tile"><input type="radio" name="tramite" value="Baja de vehículo"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="m9 9 6 6M15 9l-6 6"/></svg>Baja de vehículo</span></label><label class="tp-tile"><input type="radio" name="tramite" value="Duplicado de permiso"><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="12" rx="2"/><path d="M5 16V6a2 2 0 0 1 2-2h8"/></svg>Duplicado de permiso</span></label><label class="tp-tile"><input type="radio" name="tramite" value="Informe DGT"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>Informe DGT</span></label><label class="tp-tile"><input type="radio" name="tramite" value="Otro trámite"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M9.6 9.5a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.4M12 17h.01"/></svg>Otro trámite</span></label></div>
+    </fieldset>
+    <fieldset class="tp-step"><legend class="tp-q"><span class="n">2</span>¿Cómo lo prefieres?</legend>
+      <div class="tp-modes">
+        <label class="tp-mode"><input type="radio" name="modalidad" value="Online" checked><span><b>Online</b>sin moverte de casa</span></label>
+        <label class="tp-mode"><input type="radio" name="modalidad" value="Presencial"><span><b>En persona</b>en una gestoría cerca</span></label>
+      </div>
+      <div class="tp-cp" hidden>
+        <label class="tp-sr" for="tp-cp">Código postal</label>
+        <input id="tp-cp" name="cp" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="Tu código postal, p. ej. 18001">
+        <p class="tp-err" data-err="cp" hidden>Pon tu código postal de 5 cifras para buscarte una gestoría cerca.</p>
+      </div>
+    </fieldset>
+    <fieldset class="tp-step"><legend class="tp-q"><span class="n">3</span>¿Cómo te llamamos?</legend>
+      <div class="tp-two">
+        <div><label class="tp-sr" for="tp-nombre">Nombre</label><input id="tp-nombre" name="nombre" autocomplete="name" placeholder="Tu nombre"><p class="tp-err" data-err="nombre" hidden>Dinos cómo te llamas.</p></div>
+        <div><label class="tp-sr" for="tp-tel">Teléfono</label><input id="tp-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="Tu teléfono"><p class="tp-err" data-err="telefono" hidden>Necesitamos un teléfono de 9 cifras.</p></div>
+      </div>
+    </fieldset>
+    <label class="tp-ok"><input type="checkbox" name="consentimiento"><span>Acepto que TraspAuto ceda mis datos a un gestor administrativo colegiado colaborador para que me contacte y preste el servicio. Podré elegir otro gestor si lo prefiero.</span></label>
+    <p class="tp-err" data-err="consentimiento" hidden>Necesitamos tu permiso para pasarle tus datos al gestor.</p>
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+    <button class="btn tp-go" type="submit">Que me llame un gestor <span class="arr" aria-hidden="true">→</span></button>
+    <p class="tp-err tp-send" hidden></p>
+  </form>
+  <div class="tp-done" hidden>
+    <button class="tp-x" type="button" data-tp-close aria-label="Cerrar">×</button>
+    <span class="tp-plate" aria-hidden="true"><b>E</b>RECIBIDO</span>
+    <h2 class="tp-done-t">¡Listo!</h2>
+    <p class="tp-done-m">Un gestor te llama en breve.</p>
+    <a class="btn wa" href="https://wa.me/34622780478" target="_blank" rel="noopener">¿Prisa? Escríbenos por WhatsApp</a>
+  </div>
+</dialog>
+<style>
+.tp-dlg{border:0;padding:0;margin:auto;width:min(560px,100% - 24px);max-height:calc(100dvh - 24px);border-radius:24px;background:var(--surface);color:var(--ink);box-shadow:0 30px 80px -20px rgba(0,0,0,.45);overflow:auto}
+.tp-dlg [hidden]{display:none!important}
+.tp-dlg::backdrop{background:rgba(13,15,20,.55);backdrop-filter:blur(3px)}
+@media (max-width:600px){.tp-dlg{width:100%;max-width:100%;margin:auto 0 0;border-radius:24px 24px 0 0;max-height:94dvh}}
+.tp-form,.tp-done{position:relative;display:flex;flex-direction:column;gap:18px;padding:26px 22px calc(22px + env(safe-area-inset-bottom,0px))}
+.tp-x{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:22px;line-height:1;cursor:pointer}
+.tp-head{display:flex;flex-direction:column;gap:8px;padding-right:40px}
+.tp-head h2,.tp-done h2{font-size:26px;line-height:1.15}
+.tp-sub{color:var(--muted);font-size:15px}
+.tp-plate{align-self:flex-start;display:inline-flex;align-items:stretch;border:2px solid var(--plate-ink);border-radius:6px;background:var(--plate);color:var(--plate-ink);font:600 13px/1 var(--mono);letter-spacing:.12em;overflow:hidden}
+.tp-plate b{background:#1f4fb5;color:#fff;padding:6px 6px 4px;font-size:11px;display:flex;align-items:flex-end}
+.tp-plate{padding-right:10px}
+.tp-plate b{margin-right:10px}
+.tp-step{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+.tp-q{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;padding:0}
+.tp-q .n{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font:600 13px var(--mono)}
+.tp-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.tp-tile,.tp-mode{position:relative;cursor:pointer}
+.tp-tile input,.tp-mode input,.tp-ok input{position:absolute;opacity:0;width:1px;height:1px}
+.tp-tile span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:86px;padding:10px 6px;border:1.5px solid var(--line);border-radius:16px;text-align:center;font-size:13.5px;font-weight:600;line-height:1.2;transition:transform .15s,border-color .15s,background .15s}
+.tp-tile svg{width:26px;height:26px;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tp-tile span:hover,.tp-mode span:hover{border-color:var(--ink)}
+.tp-tile input:checked+span{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateY(-2px)}
+.tp-tile input:checked+span svg{stroke:#fff}
+.tp-modes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tp-mode span{display:flex;flex-direction:column;gap:2px;padding:14px;border:1.5px solid var(--line);border-radius:16px;font-size:14px;color:var(--muted);transition:border-color .15s,background .15s}
+.tp-mode b{color:var(--ink);font-size:16px}
+.tp-mode input:checked+span{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent);box-shadow:inset 0 0 0 1px var(--accent)}
+.tp-tile input:focus-visible+span,.tp-mode input:focus-visible+span,.tp-ok input:focus-visible+span::before{outline:2px solid var(--accent);outline-offset:3px}
+.tp-form input[type=tel],.tp-form input[name=nombre],.tp-form input[name=cp]{width:100%;height:52px;padding:0 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);font:inherit;font-size:16px}
+.tp-form input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.tp-two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:420px){.tp-two{grid-template-columns:1fr}.tp-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tp-ok{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;color:var(--muted);cursor:pointer;position:relative}
+.tp-ok span::before{content:"";flex:none;display:inline-block;width:20px;height:20px;border:1.5px solid var(--line);border-radius:6px;margin-right:10px;vertical-align:-5px;background:var(--bg)}
+.tp-ok input:checked+span::before{background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/14px no-repeat;border-color:var(--accent)}
+.tp-go{justify-content:center;width:100%;height:58px;font-size:17px;border:0;cursor:pointer;margin-top:2px}
+.tp-go[disabled]{opacity:.6;cursor:wait}
+.tp-err{margin:4px 0 0;color:#c0362c;font-size:13px}
+.tp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tp-done{align-items:center;text-align:center;padding-top:40px;padding-bottom:36px}
+.tp-done .tp-plate{align-self:center}
+@media (prefers-reduced-motion:reduce){.tp-tile span,.tp-mode span{transition:none}}
+</style>
+<script>
+(function(){
+  var ENDPOINT = "https://traspauto-solicitudes.morcillo-alberto.workers.dev/api/solicitud";
+  var dlg = document.getElementById("pedir"); if (!dlg) return;
+  var form = document.getElementById("tpForm"), done = dlg.querySelector(".tp-done"), go = form.querySelector(".tp-go"), GO = go.innerHTML;
+  var cpBox = form.querySelector(".tp-cp");
+  function preset(){
+    var t = document.body.getAttribute("data-tp-tramite"), m = document.body.getAttribute("data-tp-modo");
+    if (t) { var r = form.querySelector('input[name=tramite][value="' + t + '"]'); if (r) r.checked = true; }
+    if (m) { var q = form.querySelector('input[name=modalidad][value="' + m + '"]'); if (q) q.checked = true; }
+    cpBox.hidden = form.modalidad.value !== "Presencial";
+  }
+  function open(e){ if (e) e.preventDefault(); form.hidden = false; done.hidden = true; preset(); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); }
+  function close(){ if (dlg.close) dlg.close(); else dlg.removeAttribute("open"); if (document.body.hasAttribute("data-tp-page")) location.href = "/"; }
+  document.querySelectorAll("[data-pedir]").forEach(function(a){ a.addEventListener("click", open); });
+  dlg.querySelectorAll("[data-tp-close]").forEach(function(b){ b.addEventListener("click", close); });
+  dlg.addEventListener("click", function(e){ if (e.target === dlg) close(); });
+  form.addEventListener("change", function(e){ if (e.target.name === "modalidad") cpBox.hidden = e.target.value !== "Presencial"; });
+  function err(k, on){ var p = form.querySelector('[data-err="' + k + '"]'); if (p) p.hidden = !on; }
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+    if (form._gotcha.value) return;
+    var d = { tramite: form.tramite.value, modalidad: form.modalidad.value, cp: form.cp.value.trim(), nombre: form.nombre.value.trim(),
+      telefono: form.telefono.value.trim(), consentimiento: form.consentimiento.checked, pagina: location.pathname };
+    var tel = d.telefono.replace(/[\s.\-+]/g, "").replace(/^0034|^34/, ""), ok = true;
+    if (d.modalidad === "Presencial" && !/^\d{5}$/.test(d.cp)) { err("cp", true); ok = false; } else err("cp", false);
+    if (!d.nombre) { err("nombre", true); ok = false; } else err("nombre", false);
+    if (!/^[6789]\d{8}$/.test(tel)) { err("telefono", true); ok = false; } else err("telefono", false);
+    if (!d.consentimiento) { err("consentimiento", true); ok = false; } else err("consentimiento", false);
+    if (!ok) return;
+    var sendErr = form.querySelector(".tp-send"); sendErr.hidden = true;
+    go.disabled = true; go.textContent = "Enviando…";
+    try {
+      var r = await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(d) });
+      if (!r.ok) throw new Error(r.status);
+      dlg.querySelector(".tp-done-t").textContent = "¡Listo, " + d.nombre.split(" ")[0] + "!";
+      dlg.querySelector(".tp-done-m").textContent = "Un gestor te llama en breve para tu " + d.tramite.toLowerCase() + (d.modalidad === "Online" ? " online." : " en una gestoría cerca de ti.");
+      form.hidden = true; done.hidden = false; form.reset();
+      if (window.gtag) gtag("event", "generate_lead", { method: "formulario", page_path: location.pathname, tramite: d.tramite, modalidad: d.modalidad });
+    } catch (x) {
+      sendErr.textContent = "Uy, no ha salido. Llámanos o escríbenos por WhatsApp al 622 78 04 78."; sendErr.hidden = false;
+    }
+    go.disabled = false; go.innerHTML = GO;
+  });
+  if (document.body.hasAttribute("data-tp-page")) open();
+})();
+</script>
+</body>
+</html>
