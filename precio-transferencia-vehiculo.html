@@ -230,6 +230,33 @@ footer p{max-width:60ch}
 .ck button.ok{background:var(--cta);color:var(--cta-ink);border-color:var(--cta)}
 @media (max-width:680px){.ck{bottom:84px}}
 .ckl{background:none;border:0;padding:0;color:var(--muted);font:inherit;cursor:pointer;text-decoration:underline}
+
+
+
+/* menu servicios */
+.nav .wrap{position:relative}
+.svc{position:static}
+.svc>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:600;color:var(--ink);background:var(--surface);user-select:none}
+.svc>summary::-webkit-details-marker{display:none}
+.svc>summary::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s ease}
+.svc[open]>summary::after{transform:rotate(-135deg) translateY(-1px)}
+.svc>summary:hover{border-color:var(--accent);color:var(--accent)}
+.svc-panel{position:absolute;right:max(20px,env(safe-area-inset-right,0px));top:calc(100% + 6px);width:min(720px,calc(100% - 40px));background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 40px rgba(0,0,0,.12);padding:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px 24px;z-index:30}
+.svc-panel p{margin:0 0 8px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.svc-panel a{display:block;padding:7px 0;font-size:15px;font-weight:500;text-decoration:none;color:var(--ink);border-radius:8px}
+.svc-panel a:hover,.svc-panel a[aria-current]{color:var(--accent)}
+.svc-panel .svc-all{grid-column:1/-1;border-top:1px solid var(--line);padding-top:14px;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}
+.svc-panel .svc-all a{display:inline;padding:0;font-size:14px;font-weight:600;color:var(--accent)}
+@media (max-width:860px){.svc-panel{grid-template-columns:1fr 1fr}}
+@media (max-width:680px){
+  .svc>summary{height:38px;padding:0 12px;font-size:14px}
+  .svc-panel{position:fixed;left:12px;right:12px;width:auto;top:calc(64px + env(safe-area-inset-top,0px));max-height:calc(100vh - 160px);overflow:auto;grid-template-columns:1fr;gap:14px;padding:18px}
+  .svc-panel a{padding:9px 0;font-size:16px}
+  .nav .links{gap:10px}
+  .nav .btn{padding:0 14px}
+  .logo{font-size:21px;gap:8px}.logo img{height:24px}
+}
+@media (max-width:370px){.nav .btn{display:none}}
 </style>
 </head>
 <body>
@@ -237,6 +264,9 @@ footer p{max-width:60ch}
   <div class="wrap">
     <a class="logo" href="/" aria-label="TraspAuto, inicio"><img src="data:image/png;base64,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" alt=""><span>Trasp<b>Auto</b></span></a>
     <div class="links">
+      <details class="svc"><summary aria-label="Menú de servicios">Servicios</summary><nav class="svc-panel" aria-label="Servicios"><div><p>Transferencias</p><a href="/transferencia-vehiculos-granada">Transferencia en Granada</a><a href="/transferencia-vehiculo-online">Transferencia online</a><a href="/cambio-de-titularidad-coche">Cambio de titularidad</a><a href="/transferencia-moto">Motos y ciclomotores</a><a href="/transferencia-coche-familiar">Coche entre familiares</a><a href="/transferencia-vehiculo-empresa">Vehículos de empresa</a><a href="/transferencia-vehiculo-herencia">Por herencia</a></div><div><p>Otros trámites DGT</p><a href="/notificacion-de-venta-dgt">Notificación de venta</a><a href="/baja-vehiculo-dgt">Baja de vehículo</a><a href="/duplicado-permiso-circulacion">Duplicado del permiso</a><a href="/informe-dgt">Informe DGT</a></div><div><p>Guías y precios</p><a href="/precio-transferencia-vehiculo">Precio de la transferencia</a><a href="/itp-coche-andalucia">ITP en Andalucía</a><a href="/documentacion-transferencia-vehiculo">Documentación</a><a href="/contrato-compraventa-vehiculo">Contrato de compraventa</a></div><div class="svc-all"><span>¿No sabes cuál es tu caso?</span><a href="tel:+34622780478">Llámanos: 622 78 04 78</a><a href="https://wa.me/34622780478" target="_blank" rel="noopener">Escríbenos por WhatsApp</a></div></nav></details>
+      
+      
       <a class="link" href="/transferencia-vehiculos-granada">Granada</a>
       <a class="link" href="/precio-transferencia-vehiculo">Precio</a>
       <a class="tel" href="tel:+34622780478">622 78 04 78</a>
@@ -346,6 +376,13 @@ footer p{max-width:60ch}
     else if(h.indexOf('g.page/r/')>-1){ev='review_click';}
     if(ev){gtag('event',ev,p)}
   },true);
+})();
+</script>
+<script>
+(function(){var d=document.querySelector('.svc');if(!d)return;
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus()}});
+d.querySelectorAll('.svc-panel a').forEach(function(a){if(a.getAttribute('href')===location.pathname.replace(/\.html$/,''))a.setAttribute('aria-current','page')});
 })();
 </script>
 </body>
